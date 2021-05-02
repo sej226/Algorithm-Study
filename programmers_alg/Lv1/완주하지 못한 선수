@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        boolean flag = false;
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        List<String> listP = new ArrayList<String>(Arrays.asList(participant));
+        List<String> listC = new ArrayList<String>(Arrays.asList(completion)); 
+        
+        for(int i = listP.size()-1; i >= 0 ; i--){
+            String p = listP.get(i);
+            flag = false;
+           for(int j = listC.size()-1; j >= 0 ; j--){
+            String c = listC.get(j);
+                 if(c.equals(p)){
+                     listC.remove(j);
+                     flag = true;
+                     break;
+                } 
+            } 
+            if(!flag){
+                answer = p;
+                break;
+            }
+        }
+        return answer;
+    }
+}
